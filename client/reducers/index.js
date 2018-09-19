@@ -10,13 +10,13 @@ import user from './user.js';
 import registerform from './registerform.js';
 
 export default combineReducers({
-    note,
-    notesList,
-    modal,
-    projectList,
-    project,
-    usersList,
-    filter,
-    registerform,
-    user
-})
+	note,
+	notesList,
+	modal,
+	projectList,
+	project,
+	usersList,
+	filter,
+	registerform,
+	user,
+});

@@ -8,9 +8,9 @@
     "webpack-devserver": "webpack-dev-server --mode development --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8090 --host 0.0.0.0",
     "start": "concurrently --kill-others \"npm run server\" \"npm run webpack-devserver\"",
     "precommit": "lint-staged",
-    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"client/**.js\""
+    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"package.json\""
     },
-"lint-staged": {
+    "lint-staged": {
     "src/**/js/*.js": [
         "prettier --single-quote --use-tabs --trailing-comma es5 --write",
     "git add"

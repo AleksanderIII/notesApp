@@ -7,96 +7,99 @@ const Project = mongoose.model('Project');
 const User = mongoose.model('User');
 const dbConfig = require('../../etc/config.json').db;
 
-function setUpConnection(){
-    mongoose.connect(`${dbConfig.host}/${dbConfig.name}`, { useNewUrlParser: true });
+function setUpConnection() {
+	mongoose.connect(
+		`${dbConfig.host}/${dbConfig.name}`,
+		{ useNewUrlParser: true }
+	);
 }
 
-function ListOfUsers(){
-    return User.find();
+function ListOfUsers() {
+	return User.find();
 }
 
-function register(data) { 
-    const user = User({
-        name: data.name,
-        lastName: data.lastName,
-        email: data.email
-    });
-    return user.save();
+function register(data) {
+	const user = User({
+		name: data.name,
+		lastName: data.lastName,
+		email: data.email,
+	});
+	return user.save();
 }
 
-function createUser(data) { 
-    const user = User({
-        name: data.name,
-        lastName: data.lastName,
-        role: data.role
-    });
-    return user.save();
+function createUser(data) {
+	const user = User({
+		name: data.name,
+		lastName: data.lastName,
+		role: data.role,
+	});
+	return user.save();
 }
 
-function ListProjects(){
-    return Project.find();
+function ListProjects() {
+	return Project.find();
 }
 
-function deleteUser(id){
-    return User.findById(id).remove();
+function deleteUser(id) {
+	return User.findById(id).remove();
 }
 
-function createProject(data) { 
-    const project = Project({
-        title: data.title
-    });
-    return project.save();
+function createProject(data) {
+	const project = Project({
+		title: data.title,
+	});
+	return project.save();
 }
 
-function deleteProject(id) {  
-    return Project.findById(id).remove();
+function deleteProject(id) {
+	return Project.findById(id).remove();
 }
 
-function ListNotes(){
-    return Note.find();
+function ListNotes() {
+	return Note.find();
 }
 
-function FindNote(id){
-    return Note.findById(id);
+function FindNote(id) {
+	return Note.findById(id);
 }
 
-function createNote(data) {  
-    const note = Note({
-        title: data.title,
-        text: data.text,
-        color: data.color,
-        developer: data.developer,
-        project: data.project,
-        status: data.status,
-        date: new Date()
-    });
-    return note.save();
+function createNote(data) {
+	const note = Note({
+		title: data.title,
+		text: data.text,
+		color: data.color,
+		developer: data.developer,
+		project: data.project,
+		status: data.status,
+		date: new Date(),
+	});
+	return note.save();
 }
 
 function updateNote(data) {
-    return  Note.findById(data._id, (err, note) => {
-        note.text = data.text;  
-        note.status = data.status;  
-        note.save();
-    } );
+	return Note.findById(data._id, (err, note) => {
+		note.text = data.text;
+		note.status = data.status;
+		note.save();
+	});
 }
 
-function deleteNote(id) {  
-    return Note.findById(id).remove();
+function deleteNote(id) {
+	return Note.findById(id).remove();
 }
 
 module.exports = {
-    setUpConnection,
-    ListNotes,
-    createNote,
-    deleteNote,
-    FindNote,
-    ListProjects,
-    createProject,
-    deleteProject,
-    ListOfUsers,
-    createUser,
-    updateNote,
-    deleteUser,
-    register
-}
+	setUpConnection,
+	ListNotes,
+	createNote,
+	deleteNote,
+	FindNote,
+	ListProjects,
+	createProject,
+	deleteProject,
+	ListOfUsers,
+	createUser,
+	updateNote,
+	deleteUser,
+	register,
+};
